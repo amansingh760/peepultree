@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peepul Tree</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./peepultree.css">
+<script src="./peepultree.js" defer></script>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="announce-bar">
+<strong>Artisan Week</strong> — Extra 10% off on all handcrafted décor · Use code <strong>peepultree10</strong> · <a onclick="showToast('Code peepultree10 copied!')">Shop Now →</a>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="nav-main">
+    <a href="#" class="nav-logo">
+      <span class="logo-name">Peepul tree<span>
+      <span class="logo-tagline">Handcrafted India · Since 1992</span>
+    </a>
+    <div class="nav-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Search home decor, crafts, essentials...">
+    </div>
+    <div class="nav-actions">
+      <button class="nav-btn">👤 Sign In</button>
+      <button class="nav-btn cart-btn" onclick="showToast('🛍️ Cart opened')">
+        🛍️ Cart <span class="cart-count" id="cartCount">1</span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-cats">
+    <a href="#" class="cat-link">Wall Art</a>
+    <a href="#" class="cat-link active">Home Décor</a>
+    <a href="#" class="cat-link">Textiles</a>
+    <a href="#" class="cat-link">Planters</a>
+    <a href="#" class="cat-link">Gifting</a>
+    <a href="#" class="cat-link">Festive Picks</a>
+  </div>
+</nav>
+
+<!-- Product Layout -->
+<div class="product-wrap">
+
+ <!-- Thumbnails -->
+<div class="thumb-col">
+  <img class="thumb active"
+       src="./public/first.jpg"
+       onclick="switchImg(this,'./public/first.jpg','Mandala Front')">
+
+  <img class="thumb"
+       src="./public/second.jpg"
+       onclick="switchImg(this,'./public/second.jpg','Side Detail')">
+
+  <img class="thumb"
+       src="./public/third.jpg"
+       onclick="switchImg(this,'./public/third.jpg','Mirror Inlay')">
+
+  <img class="thumb"
+       src="./public/fourth.jpg"
+       onclick="switchImg(this,'./public/fourth.jpg','In Room')">
+
+  <img class="thumb"
+       src="./public/fifth.jpg"
+       onclick="switchImg(this,'./public/fifth.jpg','Dimensions')">
+
+  <img class="thumb"
+       src="./public/sixth.jpg"
+       onclick="switchImg(this,'./public/sixth.jpg','Gift Box')">
+</div>
+
+<!-- Main Image -->
+<div class="main-img-col">
+  <div class="main-img-box" onclick="openModal()">
+    <div class="img-pattern-bg"></div>
+    <img class="main-product-emoji" id="mainEmoji" src="./public/first.jpg" alt="Main Product">
+    <div class="wishlist-float" id="wishlistBtn" onclick="event.stopPropagation();toggleWishlist()">♡</div>
+    <div class="stock-badge">🔥 Only 8 Left</div>
+    <div class="zoom-tip">🔍 Click to zoom</div>
+    
+</div>
+
+
+    <div class="share-strip">
+      <span class="share-label">Share:</span>
+      <button class="share-btn" title="WhatsApp" onclick="showToast('📲 WhatsApp link copied!')">💬</button>
+      <button class="share-btn" title="Facebook" onclick="showToast('📘 Shared on Facebook!')">📘</button>
+      <button class="share-btn" title="Instagram" onclick="showToast('📸 Copied for Instagram!')">📸</button>
+      <button class="share-btn" title="Copy Link" onclick="showToast('🔗 Link copied to clipboard!')">🔗</button>
+    </div>
+  </div>
+
+  <!-- Info Column -->
+  <div class="info-col">
+    <div class="tag-row">
+      <span class="tag handmade">✦ Handmade in India</span>
+      <span class="tag artisanal">◆ Artisanal</span>
+      <span class="tag limited">⚑ Limited Edition</span>
+    </div>
+
+    <h1 class="product-title">Hand Block Printed Cotton Quilt<br>— Jaipur</h1>
+    <p class="product-subtitle">Our handcrafted quilts are made using premium cotton fabrics and traditional handblock printing techniques.</p>
+
+    <div class="rating-row">
+      <div class="stars-display">
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+        <span class="star-half">★</span>
+      </div>
+      <span class="rating-num">4.6</span>
+      <span class="rating-count" onclick="document.querySelector('.reviews-section').scrollIntoView({behavior:'smooth'})">142 Ratings &amp; 38 Reviews</span>
+      <span class="verified-badge">✔ Artisan Verified</span>
+    </div>
+
+    <div class="price-block">
+      <div class="price-main-row">
+        <div class="price-current"><span class="sym">₹</span>1,999</div>
+        <div class="price-original">₹4,500</div>
+        <div class="discount-chip">-56%</div>
+      </div>
+      <div class="price-tax-note">Inclusive of all taxes · Free gifting box worth ₹199 included</div>
+      <button class="emi-link">📄 No-cost EMI from ₹333/month →</button>
+    </div>
+
+    <div class="urgency-bar">
+      <span class="urgency-dot"></span>
+      <span class="urgency-text">Only 8 items left in stock!</span>
+      <span class="urgency-sub">23 people viewing now</span>
+    </div>
+
+    <!-- Size Selector -->
+    <div class="variants-section">
+      <div class="variant-label">Size: <span id="selectedSize">180 x 180 inches</span></div>
+      <div class="size-options">
+        <div class="size-opt active" onclick="selectSize(this,'190 x 180 inches','₹1,999')">190 x 180 in</div>
+        <div class="size-opt" onclick="selectSize(this,'200 x 200 inches','₹1,299')">200 x 200 in</div>
+        <div class="size-opt" onclick="selectSize(this,'220 x 240 inches','₹2,799')">220 x 240 in</div>
+        <div class="size-opt" onclick="selectSize(this,'240 x 240 inches','₹4,499')">240 x 240 in</div>
+      </div>
+    </div>
+
+    <!-- Color -->
+    <div class="variants-section" style="margin-top:0.3rem">
+      <div class="variant-label">Colour: <span id="selectedColor">Red & Black</span></div>
+      <div class="color-options">
+        <div class="color-chip active" style="background:linear-gradient(135deg,#c1572a,#2a1a0e)" title="Red & Black" onclick="selectColor(this,'Red & Black')"></div>
+        <div class="color-chip" style="background:linear-gradient(135deg,#e8c96a,#2a1a0e)" title="Gold & Black" onclick="selectColor(this,'Gold & Black')"></div>
+        <div class="color-chip" style="background:linear-gradient(135deg,#4a7b5e,#f5ede3)" title="Green & Ivory" onclick="selectColor(this,'Green & Ivory')"></div>
+        <div class="color-chip" style="background:linear-gradient(135deg,#2874f0,#fff8f2)" title="Blue & White" onclick="selectColor(this,'Blue & White')"></div>
+        <div class="color-chip" style="background:linear-gradient(135deg,#8b5e3c,#f5ddd0)" title="Brown & Peach" onclick="selectColor(this,'Brown & Peach')"></div>
+      </div>
+    </div>
+
+    <!-- Qty -->
+    <div class="qty-section" style="margin-top:1rem">
+      <span class="qty-label">Qty</span>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="changeQty(-1)">-</button>
+        <input class="qty-num" id="qtyNum" value="1" readonly>
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-group">
+      <button class="btn-cart" onclick="addCart()">🛍️ Add to Cart</button>
+      <button class="btn-buy" onclick="showToast('⚡ Redirecting to checkout...')">⚡ Buy Now</button>
+    </div>
+
+    <!-- Offers -->
+    <div class="offers-block">
+      <div class="offers-title">🏷️ Available Offers</div>
+      <div class="offer-row">
+        <div class="offer-icon-box o-bank">₹</div>
+        <div class="offer-text"><strong>Bank Offer</strong> — 10% off on HDFC Bank Debit/Credit Cards on orders above ₹1,500. <a href="#">T&C</a></div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-icon-box o-gift">🎁</div>
+        <div class="offer-text"><strong>Special Price</strong> — Extra 5% cashback with PhonePe/Paytm UPI. Offer valid till 31 March. <a href="#">T&C</a></div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-icon-box o-partner">🔄</div>
+        <div class="offer-text"><strong>Partner Offer</strong> — Buy any 2 wall art pieces, get 15% off the lower-priced one automatically. <a href="#">View all</a></div>
+      </div>
+    </div>
+
+    <!-- Delivery -->
+    <div class="delivery-block">
+      <div class="delivery-title">📦 Check Delivery</div>
+      <div class="pin-row">
+        <input class="pin-input" id="pinIn" maxlength="6" placeholder="Enter delivery pincode" type="text" oninput="this.value=this.value.replace(/\D/g,'')">
+        <button class="pin-btn" onclick="checkDelivery()">Check</button>
+      </div>
+      <div class="delivery-result" id="deliveryResult"></div>
+    </div>
+
+    <!-- Seller -->
+    <div class="seller-block">
+      <div class="seller-info">
+        <div class="seller-by">Sold by</div>
+        <div class="seller-name" onclick="showToast('Viewing seller profile...')">Rann Craft Collective, Kutch</div>
+      </div>
+      <div class="seller-rating-chip">★ 4.8 · 3,240 sales</div>
+    </div>
+
+    <!-- Assurances -->
+    <div class="assurance-grid">
+      <div class="assurance-item"><span class="assurance-icon">🔐</span>Secure Payments</div>
+      <div class="assurance-item"><span class="assurance-icon">🚚</span>Free Delivery</div>
+      <div class="assurance-item"><span class="assurance-icon">↩️</span>Easy Returns</div>
+      <div class="assurance-item"><span class="assurance-icon">🎁</span>Gift Wrapped</div>
+    </div>
+
+    <!-- Accordion Info -->
+    <div class="accordion">
+      <div class="acc-item open" onclick="toggleAcc(this)">
+        <div class="acc-header">Product Description <span class="acc-arrow">▾</span></div>
+        <div class="acc-body">
+          <div class="acc-content">
+            Originating from the Kutch region of Gujarat, <strong>Lippan art</strong> is an ancient wall decoration technique using a mixture of mud and camel dung, now adapted with clay on wood. Skilled artisans press tiny convex mirrors into intricate geometric and floral patterns, catching light to create a mesmerizing ripple effect throughout the day.<br><br>
+            This panel features a classic <strong>red-and-black mandala motif</strong> — 12 layers of radiating lotus petals framed by a bold border of dancing peacocks. Each mirror is hand-set and each clay ridge individually shaped, making every piece one of a kind. No two panels are exactly alike.
+          </div>
+        </div>
+      </div>
+      <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-header">Specifications <span class="acc-arrow">▾</span></div>
+        <div class="acc-body">
+          <div class="acc-content">
+            <table class="specs-table">
+              <tr><td>Craft Origin</td><td>Kutch, Gujarat, India</td></tr>
+              <tr><td>Technique</td><td>Lippan Art (Clay & Mirror Relief)</td></tr>
+              <tr><td>Base Material</td><td>9mm Marine Ply</td></tr>
+              <tr><td>Surface</td><td>Clay + Acrylic Paint + Mirror Inlay</td></tr>
+              <tr><td>Dimensions</td><td>18 x 18 inches (45 x 45 cm)</td></tr>
+              <tr><td>Thickness</td><td>1.8 cm</td></tr>
+              <tr><td>Weight</td><td>~1.2 kg</td></tr>
+              <tr><td>Finish</td><td>Matte Clay with Gloss Mirror Tiles</td></tr>
+              <tr><td>Hanging</td><td>Ready-to-hang D-ring on back</td></tr>
+              <tr><td>Care</td><td>Wipe with dry soft cloth · Avoid moisture</td></tr>
+              <tr><td>Artisan</td><td>Fatima Khatri & Collective, Bhuj</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-header">Shipping & Returns <span class="acc-arrow">▾</span></div>
+        <div class="acc-body">
+          <div class="acc-content">
+            🚚 <strong>Free standard delivery</strong> across India on all orders above ₹499.<br>
+            📦 Packed in recycled cardboard + foam padding. Special fragile label marked.<br>
+            🕐 Ships in <strong>2-3 business days</strong>. Estimated delivery: <strong>5-7 business days</strong>.<br>
+            ↩️ <strong>7-day easy returns</strong> for damaged or incorrect items. Photograph damage within 24 hours of receipt.<br>
+            ⚠️ Note: Slight variations in colour, mirror placement, and clay texture are natural to the handmade process and are not defects.
+          </div>
+        </div>
+      </div>
+      <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-header">Care & Sustainability <span class="acc-arrow">▾</span></div>
+        <div class="acc-body">
+          <div class="acc-content">
+            🌿 Made from <strong>sustainably sourced clay</strong>, recycled mirrors, and FSC-certified plywood.<br>
+            🎨 Paints used are water-based and non-toxic.<br>
+            🧹 Clean with a barely damp cloth. Never submerge in water or leave in high-humidity rooms.<br>
+            ♻️ Packaging is 100% recyclable. We offset carbon for every delivery.
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+
+<!-- Reviews -->
+<div class="section-divider">
+  <div class="div-line"></div>
+  <span class="div-ornament">✦ ✦ ✦</span>
+  <div class="div-line"></div>
+</div>
+
+<div class="reviews-section">
+  <div class="section-head">
+    <h2 class="section-title">Ratings & Reviews</h2>
+    <span class="section-sub">What our customers say</span>
+  </div>
+  <div class="reviews-grid">
+    <div class="reviews-summary-box">
+      <div class="big-score">4.6</div>
+      <div class="score-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <div class="score-total">142 Ratings · 38 Reviews</div>
+      <div class="rating-bar-row"><span class="rb-label">5</span><div class="rb-track"><div class="rb-fill" style="width:72%;animation-delay:0.1s"></div></div><span class="rb-count">72%</span></div>
+      <div class="rating-bar-row"><span class="rb-label">4</span><div class="rb-track"><div class="rb-fill" style="width:17%;animation-delay:0.2s"></div></div><span class="rb-count">17%</span></div>
+      <div class="rating-bar-row"><span class="rb-label">3</span><div class="rb-track"><div class="rb-fill" style="width:7%;animation-delay:0.3s"></div></div><span class="rb-count">7%</span></div>
+      <div class="rating-bar-row"><span class="rb-label">2</span><div class="rb-track"><div class="rb-fill" style="width:3%;animation-delay:0.4s"></div></div><span class="rb-count">3%</span></div>
+      <div class="rating-bar-row"><span class="rb-label">1</span><div class="rb-track"><div class="rb-fill" style="width:1%;animation-delay:0.5s"></div></div><span class="rb-count">1%</span></div>
+    </div>
+
+    <div class="review-list">
+      <div class="review-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#c1572a,#8b3a14)">PS</div>
+          <div class="rv-info">
+            <div class="rv-name">Pooja Sharma</div>
+            <div class="rv-date">Verified Purchase · March 2026</div>
+          </div>
+          <div class="rv-badge good">5 ★</div>
+        </div>
+        <div class="rv-title">Absolutely Breathtaking — Worth Every Rupee!</div>
+        <div class="rv-body">I ordered the 18x18 size for my living room and I am speechless. The clay work is so intricate and the mirrors catch the morning sun in the most magical way. Every single guest who comes home asks where I bought it. Arrived perfectly packed with zero damage. Truly museum-quality craft.</div>
+        <div class="rv-helpful">
+          Helpful? <button class="rv-helpful-btn" onclick="likeThis(this)">👍 Yes (64)</button>
+          <button class="rv-helpful-btn">👎 No</button>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#2d5a27,#1a3a14)">RK</div>
+          <div class="rv-info">
+            <div class="rv-name">Rahul Kapoor</div>
+            <div class="rv-date">Verified Purchase · February 2026</div>
+          </div>
+          <div class="rv-badge good">5 ★</div>
+        </div>
+        <div class="rv-title">Gifted This — Got Rave Reviews!</div>
+        <div class="rv-body">Gifted this to my mother for Diwali. It came in the most beautiful gift box with a handwritten artisan card. She absolutely loves it and it now hangs in her pooja room. The red and black colours are deeper and richer in person than in the photos. Highly recommend!</div>
+        <div class="rv-helpful">
+          Helpful? <button class="rv-helpful-btn" onclick="likeThis(this)">👍 Yes (41)</button>
+          <button class="rv-helpful-btn">👎 No</button>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#b07c00,#6a4a00)">AM</div>
+          <div class="rv-info">
+            <div class="rv-name">Ananya Mehrotra</div>
+            <div class="rv-date">Verified Purchase · January 2026</div>
+          </div>
+          <div class="rv-badge ok">4 ★</div>
+        </div>
+        <div class="rv-title">Beautiful Art, Slight Delay in Shipping</div>
+        <div class="rv-body">The piece itself is stunning — the mirror inlay work is insanely detailed and the colours are vibrant. Took off one star because shipping took 10 days instead of the estimated 7. But the customer support kept me updated throughout and it arrived in perfect condition. Would order again.</div>
+        <div class="rv-helpful">
+          Helpful? <button class="rv-helpful-btn" onclick="likeThis(this)">👍 Yes (22)</button>
+          <button class="rv-helpful-btn">👎 No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Related Products -->
+<div class="related-section">
+  <div class="related-inner">
+    <div class="section-head">
+      <h2 class="section-title">You May Also Love</h2>
+      <span class="section-sub">Handpicked from our artisan collection</span>
+    </div>
+    <div class="related-grid">
+      <div class="product-card" onclick="showToast('Viewing Hand Block Printed Cotton Quilt - jaipur')">
+        <div class="card-img"><img src="./public/main.jpg" alt=""><div class="card-badge">-40%</div></div>
+        <div class="card-body">
+          <div class="card-name">Hand Block Printed Cotton Quilt - Jaipur</div>
+          <div class="card-rating"><span class="card-stars">★★★★★</span> 4.8 · 312 ratings</div>
+          <div class="card-price"><span class="curr">₹1,299</span><span class="orig">₹2,199</span><span class="off">-40%</span></div>
+        </div>
+      </div>
+      <div class="product-card" onclick="showToast('Viewing mud-art-square-wall-hanging')">
+        <div class="card-img"><img src="./public/mud-art-square-wall-hanging-in-red-blackpt-ku-0200-hs-976079.webp" alt=""><div class="card-badge">Bestseller</div></div>
+        <div class="card-body">
+          <div class="card-name">mud-art-square-wall-hanging</div>
+          <div class="card-rating"><span class="card-stars">★★★★★</span> 4.9 · 1,204 ratings</div>
+          <div class="card-price"><span class="curr">₹8400</span><span class="orig">₹1,5000</span><span class="off">-44%</span></div>
+        </div>
+      </div>
+      <div class="product-card" onclick="showToast('Viewing Handwoven OIP')">
+        <div class="card-img"><img src="./public/OIP.jpg" alt=""><div class="card-badge">New</div></div>
+        <div class="card-body">
+          <div class="card-name">Handwoven OIP</div>
+          <div class="card-rating"><span class="card-stars">★★★★</span> 4.5 · 88 ratings</div>
+          <div class="card-price"><span class="curr">₹1225</span><span class="orig">₹2,500</span><span class="off">-51%</span></div>
+        </div>
+      </div>
+      <div class="product-card" onclick="showToast('Viewing Ceramic Vase...')">
+        <div class="card-img">🏺<div class="card-badge">-50%</div></div>
+        <div class="card-body">
+          <div class="card-name">Khavda Rann Ceramic Vase — Teal & Gold</div>
+          <div class="card-rating"><span class="card-stars">★★★★★</span> 4.7 · 531 ratings</div>
+          <div class="card-price"><span class="curr">₹1,549</span><span class="orig">₹3,100</span><span class="off">-50%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sticky Bar -->
+<div class="sticky-bar" id="stickyBar">
+  <span class="sticky-name">Lippan Mud Art Wall Panel — Red & Black Mandala</span>
+  <span class="sticky-price">₹1,999</span>
+  <button class="sticky-btn" onclick="addCart()">Add to Cart</button>
+  <button class="sticky-btn" style="background:transparent;color:var(--terracotta);border:2px solid var(--terracotta);" onclick="showToast('⚡ Proceeding to checkout...')">Buy Now</button>
+</div>
+
+<!-- Zoom Modal -->
+<div class="modal" id="zoomModal" onclick="closeModal()">
+  <button class="modal-close">✕</button>
+  <img class="modal-emoji" id="modalEmoji" src="./public/first.jpg">
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+</body>
+</html>
